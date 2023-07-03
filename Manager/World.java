@@ -1,25 +1,71 @@
+package Manager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Array;
+
+import Player.MouseListeners;
+import gameStates.*;
+import gameStates.Menu;
 
 public class World extends JPanel implements Runnable{
     private int width = 640;
     private int height = 640;
     private double FPS_SET = 60.0;
+    private MouseListeners mouseListeners;
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public Playing getPlaying() {
+        return playing;
+    }
+
     private double UPS_SET = 60.0;
+    private Menu menu;
+    private Playing playing;
     private Image[] images = new Image[2];
     private Toolkit t = Toolkit.getDefaultToolkit();
     Thread gameThread = new Thread(this);
     public void initImage(){
-        images[0] = t.getImage(getClass().getResource("/resource/menu"));
-        images[1] = t.getImage(getClass().getResource("/resource/field"));
+        images[0] = t.getImage(getClass().getResource("/resources/menu.png"));
+        images[1] = t.getImage(getClass().getResource("/resources/field.png"));
+    }
+    public void initInput(){
+        mouseListeners = new MouseListeners(this);
+        addMouseListener(mouseListeners);
+        addMouseMotionListener(mouseListeners);
+        setFocusable(true);
+        requestFocus();
+    }
+    public void initState(){
+        menu = Menu.createInstance();
+        playing = Playing.createInstance();
     }
     public void updates(){
-
+        playing.update();
+    }
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        render(g);
+    }
+    public void render(Graphics g){
+        switch (gameScenes.GameScenes){
+            case MENU:
+                menu.render(g,images[0]);
+                break;
+            case PLAYING:
+                playing.render(g,images[1]);
+                break;
+        }
     }
     public World(){
         setPreferredSize(new Dimension(width,height));
         initImage();
+        initState();
+        initInput();
+        startThread();
     }
     public void startThread(){
         gameThread.start();

@@ -1,3 +1,5 @@
+import Manager.World;
+
 import javax.swing.*;
 
 public class Main {
