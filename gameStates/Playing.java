@@ -2,7 +2,9 @@ package gameStates;
 
 import Board.Board4x4;
 import Calculation.calculation;
+import Calculation.tileCombination;
 import entities.EntitiesManager;
+import entities.EntitiesStorage;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -17,6 +19,11 @@ public class Playing implements sceneMethods{
     private Board4x4 board4x4;
     private EntitiesManager entitiesManager;
     private calculation Calculation;
+    private tileCombination TileCombination;
+    private EntitiesStorage entitiesStorage;
+    public EntitiesManager getEntitiesManager() {
+        return entitiesManager;
+    }
 
     public calculation getCalculation() {
         return Calculation;
@@ -26,6 +33,10 @@ public class Playing implements sceneMethods{
 
     public Board4x4 getBoard4x4() {
         return board4x4;
+    }
+
+    public tileCombination getTileCombination() {
+        return TileCombination;
     }
 
     public static Playing createInstance(){
@@ -41,10 +52,17 @@ public class Playing implements sceneMethods{
         initComponent();
         initAction();
     }
+
+    public EntitiesStorage getEntitiesStorage() {
+        return entitiesStorage;
+    }
+
     public void initComponent(){
         board4x4 = Board4x4.createInstance();
         entitiesManager = EntitiesManager.createInstance(this);
         Calculation = calculation.createInstance(this);
+        TileCombination = tileCombination.createInstance(this);
+        entitiesStorage = EntitiesStorage.createInstance(this);
     }
     public void initAction(){
         entitiesManager.createEntities();

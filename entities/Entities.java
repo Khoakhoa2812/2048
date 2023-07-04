@@ -5,6 +5,17 @@ import Board.Tile;
 import java.awt.*;
 
 public class Entities {
+    private int Num = 0;
+    private boolean status = true;
+
+    public int getNum() {
+        return Num;
+    }
+
+    public void setNum(int num) {
+        Num = num;
+    }
+
     private double x,y;
     private final int width = 157;
     private final int height = 130;
@@ -61,13 +72,23 @@ public class Entities {
         this.newTileNum = newTileNum;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public Entities(Tile tile){
         setPosition(tile);
         this.oldTileNum = tile.getTileNum();
         this.newTileNum = tile.getTileNum();
     }
     public void EntityRender(Graphics g){
-        g.drawImage(imageEntity,(int)Bound.getX(),(int)Bound.getY(),(int)Bound.getWidth(),(int)Bound.getHeight(),null);
+        if(status){
+            g.drawImage(imageEntity,(int)Bound.getX(),(int)Bound.getY(),(int)Bound.getWidth(),(int)Bound.getHeight(),null);
+        }
     }
     public void update(){
         if(newTileNum != oldTileNum){
