@@ -25,7 +25,7 @@ public class Board4x4 {
                 line++;
                 row = 0;
             }
-            tile[i] = new Tile();
+            tile[i] = new Tile(i);
             tile[i].setPosition(row*162,line*135+100);
             row++;
         }

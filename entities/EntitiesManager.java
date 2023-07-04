@@ -37,6 +37,82 @@ public class EntitiesManager {
             System.out.println("You Lose");
         }
     }
+    public void createEntitiesPerMove(){
+        if(playing.isDragCompleted()){
+            createEntities();
+            playing.setDragCompleted(false);
+        }
+    }
+    public void moveEntities(){
+        switch (playing.getCalculation().calculateDirection()){
+            case "NORTH":
+                moveUp();
+                break;
+            case "SOUTH":
+                moveDown();
+                break;
+            case "WEST":
+                moveLeft();
+                break;
+            case "EAST":
+                moveRight();
+                break;
+        }
+    }
+    public boolean checkTileOccupied(int num){
+        for(Entities entities:entitiesList){
+            if(playing.getBoard4x4().getTile()[num].isOccupied(entities)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void moveUp(){
+        for (Entities entities: entitiesList){
+            if(entities.getOldTileNum()-4 >=0){
+                if(!checkTileOccupied(entities.getOldTileNum()-4)){
+                    entities.updatePosition(playing.getBoard4x4().getTile()[entities.getOldTileNum()-4]);
+                    entities.setNewTileNum(entities.getOldTileNum()-4);
+                }
+            }
+        }
+    }
+    public void moveDown(){
+        for (Entities entities: entitiesList){
+            if(entities.getOldTileNum()+4 <16){
+                if(!checkTileOccupied(entities.getOldTileNum()+4)){
+                    entities.updatePosition(playing.getBoard4x4().getTile()[entities.getOldTileNum()+4]);
+                    entities.setNewTileNum(entities.getOldTileNum()+4);
+                }
+            }
+        }
+    }
+    public void moveLeft(){
+        for (Entities entities: entitiesList){
+            if((entities.getOldTileNum()-1 >=0 && entities.getOldTileNum() <4) ||
+                    (entities.getOldTileNum() -1 >= 4 && entities.getOldTileNum() < 8) ||
+                    (entities.getOldTileNum() -1 >= 8 && entities.getOldTileNum() < 12) ||
+                    (entities.getOldTileNum() -1 >= 12 && entities.getOldTileNum() < 16)){
+                if(!checkTileOccupied(entities.getOldTileNum()-1)){
+                    entities.updatePosition(playing.getBoard4x4().getTile()[entities.getOldTileNum()-1]);
+                    entities.setNewTileNum(entities.getOldTileNum()-1);
+                }
+            }
+        }
+    }
+    public void moveRight(){
+        for (Entities entities: entitiesList){
+            if((entities.getOldTileNum()+1 <=3 && entities.getOldTileNum() >=0) ||
+                    (entities.getOldTileNum() +1 <= 7 && entities.getOldTileNum() > 3) ||
+                    (entities.getOldTileNum() +1 <= 11 && entities.getOldTileNum() > 7) ||
+                    (entities.getOldTileNum() +1 <= 15 && entities.getOldTileNum() > 11)){
+                if(!checkTileOccupied(entities.getOldTileNum()+1)){
+                    entities.updatePosition(playing.getBoard4x4().getTile()[entities.getOldTileNum()+1]);
+                    entities.setNewTileNum(entities.getOldTileNum()+1);
+                }
+            }
+        }
+    }
     public int checkOccupied(int num){
         for(Entities entities:entitiesList){
             if(playing.getBoard4x4().getTile()[num].isOccupied(entities)){
@@ -55,9 +131,10 @@ public class EntitiesManager {
         return null;
     }
     public void testEntities(){
+        int i = 0;
         for(Entities entities:entitiesList){
-            System.out.println("x: "+entities.getBound().getWidth());
-            System.out.println("y: "+entities.getBound().getHeight());
+            System.out.println("entity "+i+" position: "+entities.getOldTileNum());
+            i++;
         }
     }
     private int reRandomized(int num1, int num2){
@@ -76,6 +153,14 @@ public class EntitiesManager {
     public void EntitiesRender(Graphics g){
         for(Entities entities:entitiesList){
             entities.EntityRender(g);
+        }
+    }
+    public void update(){
+        createEntitiesPerMove();
+        moveEntities();
+        testEntities();
+        for (Entities entities:entitiesList){
+            entities.update();
         }
     }
 }

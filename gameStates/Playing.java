@@ -1,6 +1,7 @@
 package gameStates;
 
 import Board.Board4x4;
+import Calculation.calculation;
 import entities.EntitiesManager;
 
 import java.awt.*;
@@ -15,6 +16,12 @@ public class Playing implements sceneMethods{
     private double finalY;
     private Board4x4 board4x4;
     private EntitiesManager entitiesManager;
+    private calculation Calculation;
+
+    public calculation getCalculation() {
+        return Calculation;
+    }
+
     private static Playing instance;
 
     public Board4x4 getBoard4x4() {
@@ -37,6 +44,7 @@ public class Playing implements sceneMethods{
     public void initComponent(){
         board4x4 = Board4x4.createInstance();
         entitiesManager = EntitiesManager.createInstance(this);
+        Calculation = calculation.createInstance(this);
     }
     public void initAction(){
         entitiesManager.createEntities();
@@ -48,6 +56,31 @@ public class Playing implements sceneMethods{
             isDragged = true;
         }
     }
+
+    public double getInitX() {
+        return initX;
+    }
+
+    public double getInitY() {
+        return initY;
+    }
+
+    public double getFinalX() {
+        return finalX;
+    }
+
+    public double getFinalY() {
+        return finalY;
+    }
+
+    public boolean isDragCompleted() {
+        return isDragCompleted;
+    }
+
+    public void setDragCompleted(boolean dragCompleted) {
+        isDragCompleted = dragCompleted;
+    }
+
     public void mouseRelease(MouseEvent e){
         if(isDragged){
             finalX = e.getX();
@@ -56,14 +89,8 @@ public class Playing implements sceneMethods{
             isDragCompleted = true;
         }
     }
-    public void Action(){
-        if(isDragCompleted){
-            entitiesManager.createEntities();
-            isDragCompleted = false;
-        }
-    }
     public void update(){
-        Action();
+        entitiesManager.update();
     }
     @Override
     public void render(Graphics g, Image img) {
