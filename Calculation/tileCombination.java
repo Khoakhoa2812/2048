@@ -1,8 +1,6 @@
 package Calculation;
 
 import entities.Entities;
-import entities.Tile4;
-import entities.Tile8;
 import gameStates.Playing;
 
 public class tileCombination {
@@ -25,13 +23,15 @@ public class tileCombination {
             if(playing.getCalculation().doCalculation(entity1,entity2) == availableValueCombination[i] && entity1.isStatus() && entity2.isStatus()){
                 entity1.setStatus(false);
                 entity2.setStatus(false);
+                entity1.setNum(1);
+                entity2.setNum(1);
                 switch (i){
                     case 0:
                         for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
-                            if(entities.getValue() == 4 && entities.getNum() == 0){
+                            if(entities.getValue() == 4 && entities.getNum() == 0 && !entities.isStatus()){
                                 entities.setStatus(true);
-                                entities.setPosition(playing.getBoard4x4().getTile()[entity1.getOldTileNum()]);
-                                entities.setOldTileNum(entity1.getOldTileNum());
+                                entities.setPosition(playing.getBoard4x4().getTile()[entity1.getTileNum()]);
+                                entities.setTileNum(entity1.getTileNum());
                                 entities.setNum(1);
                                 break;
                             }
@@ -39,10 +39,10 @@ public class tileCombination {
                         break;
                     case 1:
                         for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
-                            if(entities.getValue() == 8 && entities.getNum() == 0){
+                            if(entities.getValue() == 8 && entities.getNum() == 0 && !entities.isStatus()){
                                 entities.setStatus(true);
-                                entities.setPosition(playing.getBoard4x4().getTile()[entity1.getOldTileNum()]);
-                                entities.setOldTileNum(entity1.getOldTileNum());
+                                entities.setPosition(playing.getBoard4x4().getTile()[entity1.getTileNum()]);
+                                entities.setTileNum(entity1.getTileNum());
                                 entities.setNum(1);
                                 break;
                             }

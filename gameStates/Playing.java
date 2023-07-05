@@ -66,8 +66,16 @@ public class Playing implements sceneMethods{
     }
     public void initAction(){
         entitiesManager.createEntities();
+//        entitiesManager.initTile();
+    }
+    public void mousePressed(MouseEvent e){
+        Rectangle rectangle = new Rectangle(0,0,640,640);
+        if(rectangle.contains(e.getX(),e.getY())){
+            isDragCompleted = false;
+        }
     }
     public void mouseDrag(MouseEvent e){
+        isDragCompleted = false;
         if(!isDragged){
             initX = e.getX();
             initY = e.getY();
@@ -105,6 +113,9 @@ public class Playing implements sceneMethods{
             finalY = e.getY();
             isDragged = false;
             isDragCompleted = true;
+            entitiesManager.releaseMove();
+            entitiesManager.setLimitPerCreation(false);
+            entitiesManager.ageTile();
         }
     }
     public void update(){

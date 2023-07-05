@@ -38,7 +38,10 @@ public class MouseListeners implements MouseListener, MouseMotionListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        switch (gameScenes.GameScenes){
+            case PLAYING:
+//                w.getPlaying().mousePressed(e);
+        }
     }
 
     @Override
