@@ -19,18 +19,54 @@ public class EntitiesStorage {
     private Playing playing;
     public EntitiesStorage(Playing playing){
         this.playing = playing;
+        tile2Store();
         tile4Store();
         tile8Store();
+        tile16Store();
+        tile32Store();
+        tile64Store();
+        tile128Store();
+        tile256Store();
         rejectStatus();
     }
+    public void tile2Store(){
+        for(int i = 0;i<200;i++){
+            playing.getEntitiesManager().getEntitiesList().add(new Tile2(playing.getBoard4x4().getTile()[0]));
+        }
+    }
     public void tile4Store(){
-        for(int i = 0;i<50;i++){
+        for(int i = 0;i<200;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile4(playing.getBoard4x4().getTile()[0]));
         }
     }
     public void tile8Store(){
-        for(int i = 0;i<50;i++){
+        for(int i = 0;i<150;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile8(playing.getBoard4x4().getTile()[0]));
+        }
+    }
+    public void tile16Store(){
+        for(int i = 0;i<100;i++){
+            playing.getEntitiesManager().getEntitiesList().add(new Tile16(playing.getBoard4x4().getTile()[0]));
+        }
+    }
+    public void tile32Store(){
+        for(int i = 0;i<75;i++){
+            playing.getEntitiesManager().getEntitiesList().add(new Tile32(playing.getBoard4x4().getTile()[0]));
+        }
+    }
+    public void tile64Store(){
+        for(int i = 0;i<50;i++){
+            playing.getEntitiesManager().getEntitiesList().add(new Tile64(playing.getBoard4x4().getTile()[0]));
+        }
+    }
+    public void tile128Store(){
+        for(int i = 0;i<30;i++){
+            playing.getEntitiesManager().getEntitiesList().add(new Tile128(playing.getBoard4x4().getTile()[0]));
+        }
+    }
+    public void tile256Store(){
+        for(int i = 0;i<25;i++){
+            playing.getEntitiesManager().getEntitiesList().add(new Tile256(playing.getBoard4x4().getTile()[0]));
         }
     }
     public void rejectStatus(){

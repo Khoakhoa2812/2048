@@ -16,6 +16,15 @@ public class Entities {
         isMoveCompleted = moveCompleted;
     }
     private boolean isEntitiesNewlyCreated = false;
+    private boolean isEntitiesNewlyCombined = false;
+
+    public boolean isEntitiesNewlyCombined() {
+        return isEntitiesNewlyCombined;
+    }
+
+    public void setEntitiesNewlyCombined(boolean entitiesNewlyCombined) {
+        isEntitiesNewlyCombined = entitiesNewlyCombined;
+    }
 
     public boolean isEntitiesNewlyCreated() {
         return isEntitiesNewlyCreated;
@@ -65,6 +74,36 @@ public class Entities {
     }
     public void updatePosition(Tile tile){
         Bound.setBounds((int)tile.getBound().getX(),(int)tile.getBound().getY(),width,height);
+    }
+    public void move(String Direction, Tile tile){
+        if(Bound.getX() != tile.getBound().getX() || Bound.getY() != tile.getBound().getY()){
+            switch (Direction){
+                case "UP":
+                    Bound.setBounds((int)Bound.getX(),(int)Bound.getY()-68,width,height);
+                    if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
+                        TileNum = TileNum-4;
+                    }
+                    break;
+                case "DOWN":
+                    Bound.setBounds((int)Bound.getX(),(int)Bound.getY()+68,width,height);
+                    if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
+                        TileNum = TileNum+4;
+                    }
+                    break;
+                case "LEFT":
+                    Bound.setBounds((int)Bound.getX()-81,(int)Bound.getY(),width,height);
+                    if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
+                        TileNum = TileNum-1;
+                    }
+                    break;
+                case "RIGHT":
+                    Bound.setBounds((int)Bound.getX()+81,(int)Bound.getY(),width,height);
+                    if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
+                        TileNum = TileNum+1;
+                    }
+                    break;
+            }
+        }
     }
     public void setValue(int value) {
         this.value = value;

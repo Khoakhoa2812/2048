@@ -28,7 +28,7 @@ public class Tile {
         g.fillRect((int)Bound.getX(),(int)Bound.getY(),(int)Bound.getWidth(),(int)Bound.getHeight());
     }
     public boolean isOccupied(Entities entity){
-        if(Bound.contains(entity.getBound().getX()+50,entity.getBound().getY()+50)){
+        if(Bound.getX() == entity.getBound().getX() && Bound.getY() == entity.getBound().getY()){
             return true;
         }
         return false;

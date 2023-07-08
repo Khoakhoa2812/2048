@@ -1,6 +1,7 @@
 package gameStates;
 
 import Board.Board4x4;
+import Calculation.TempoValue;
 import Calculation.calculation;
 import Calculation.tileCombination;
 import entities.EntitiesManager;
@@ -21,6 +22,7 @@ public class Playing implements sceneMethods{
     private calculation Calculation;
     private tileCombination TileCombination;
     private EntitiesStorage entitiesStorage;
+    private TempoValue tempoValue;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
     }
@@ -63,7 +65,13 @@ public class Playing implements sceneMethods{
         Calculation = calculation.createInstance(this);
         TileCombination = tileCombination.createInstance(this);
         entitiesStorage = EntitiesStorage.createInstance(this);
+        tempoValue = TempoValue.createInstance(this);
     }
+
+    public TempoValue getTempoValue() {
+        return tempoValue;
+    }
+
     public void initAction(){
         entitiesManager.createEntities();
 //        entitiesManager.initTile();
@@ -113,9 +121,11 @@ public class Playing implements sceneMethods{
             finalY = e.getY();
             isDragged = false;
             isDragCompleted = true;
-            entitiesManager.releaseMove();
-            entitiesManager.setLimitPerCreation(false);
+            entitiesManager.releaseNewEntities();
             entitiesManager.ageTile();
+            if(tempoValue.getCurrDirection() != Calculation.calculateDirection()){
+                entitiesManager.setLimitPerCreation(false);
+            }
         }
     }
     public void update(){
