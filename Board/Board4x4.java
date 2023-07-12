@@ -27,6 +27,7 @@ public class Board4x4 {
             }
             tile[i] = new Tile(i);
             tile[i].setPosition(row*162,line*136+100);
+//            System.out.println(tile[i].getBound().getY());
             row++;
         }
     }

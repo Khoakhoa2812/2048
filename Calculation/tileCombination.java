@@ -14,7 +14,7 @@ public class tileCombination {
         }
     }
     private Playing playing;
-    private int[] availableValueCombination = {4,8,16,32,64,128,256};
+    private int[] availableValueCombination = {4,8,16,32,64,128,256,512,1024};
     public tileCombination(Playing playing){
         this.playing = playing;
     }
@@ -31,7 +31,7 @@ public class tileCombination {
                             if(entities.getValue() == 4 && entities.getNum() == 0 && !entities.isStatus()){
                                 entities.setStatus(true);
                                 entities.setPosition(playing.getBoard4x4().getTile()[entity2.getTileNum()]);
-                                entities.setTileNum(entity1.getTileNum());
+                                entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
                                 break;
@@ -101,6 +101,30 @@ public class tileCombination {
                     case 6:
                         for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
                             if(entities.getValue() == 256 && entities.getNum() == 0 && !entities.isStatus()){
+                                entities.setStatus(true);
+                                entities.setPosition(playing.getBoard4x4().getTile()[entity2.getTileNum()]);
+                                entities.setTileNum(entity2.getTileNum());
+                                entities.setNum(1);
+                                entities.setEntitiesNewlyCombined(true);
+                                break;
+                            }
+                        }
+                        break;
+                    case 7:
+                        for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                            if(entities.getValue() == 512 && entities.getNum() == 0 && !entities.isStatus()){
+                                entities.setStatus(true);
+                                entities.setPosition(playing.getBoard4x4().getTile()[entity2.getTileNum()]);
+                                entities.setTileNum(entity2.getTileNum());
+                                entities.setNum(1);
+                                entities.setEntitiesNewlyCombined(true);
+                                break;
+                            }
+                        }
+                        break;
+                    case 8:
+                        for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                            if(entities.getValue() == 1024 && entities.getNum() == 0 && !entities.isStatus()){
                                 entities.setStatus(true);
                                 entities.setPosition(playing.getBoard4x4().getTile()[entity2.getTileNum()]);
                                 entities.setTileNum(entity2.getTileNum());
