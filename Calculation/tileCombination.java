@@ -23,6 +23,8 @@ public class tileCombination {
             if(playing.getCalculation().doCalculation(entity1,entity2) == availableValueCombination[i] && entity1.isStatus() && entity2.isStatus() && !entity1.isEntitiesNewlyCombined() && !entity2.isEntitiesNewlyCombined()){
                 entity1.setStatus(false);
                 entity2.setStatus(false);
+                entity1.setEntitiesNewlyDeleted(true);
+                entity2.setEntitiesNewlyDeleted(true);
                 entity1.setNum(1);
                 entity2.setNum(1);
                 switch (i){

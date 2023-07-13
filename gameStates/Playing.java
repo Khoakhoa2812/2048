@@ -4,6 +4,7 @@ import Board.Board4x4;
 import Calculation.TempoValue;
 import Calculation.calculation;
 import Calculation.tileCombination;
+import Feature.Undo;
 import entities.EntitiesManager;
 import entities.EntitiesStorage;
 
@@ -23,6 +24,7 @@ public class Playing implements sceneMethods{
     private tileCombination TileCombination;
     private EntitiesStorage entitiesStorage;
     private TempoValue tempoValue;
+    private Undo undo;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
     }
@@ -66,6 +68,7 @@ public class Playing implements sceneMethods{
         TileCombination = tileCombination.createInstance(this);
         entitiesStorage = EntitiesStorage.createInstance(this);
         tempoValue = TempoValue.createInstance(this);
+        undo = Undo.createInstance(this);
     }
 
     public TempoValue getTempoValue() {
@@ -82,7 +85,11 @@ public class Playing implements sceneMethods{
             isDragCompleted = false;
         }
     }
+    public void mouseClicked(int x, int y){
+        undo.UndoMove(x,y);
+    }
     public void mouseDrag(MouseEvent e){
+        undo.storeCurrentEntities();
         isDragCompleted = false;
         if(!isDragged){
             initX = e.getX();
@@ -115,12 +122,17 @@ public class Playing implements sceneMethods{
         isDragCompleted = dragCompleted;
     }
 
+    public Undo getUndo() {
+        return undo;
+    }
+
     public void mouseRelease(MouseEvent e){
         if(isDragged){
             finalX = e.getX();
             finalY = e.getY();
             isDragged = false;
             isDragCompleted = true;
+            undo.setUndoUsed(false);
             entitiesManager.releaseNewEntities();
             entitiesManager.ageTile();
             if(tempoValue.getCurrDirection() != Calculation.calculateDirection()){
@@ -135,6 +147,7 @@ public class Playing implements sceneMethods{
     public void render(Graphics g, Image img) {
         g.drawImage(img,0,100,640,540,null);
         entitiesManager.EntitiesRender(g);
+        undo.render(g);
 //        board4x4.render(g);
     }
 }

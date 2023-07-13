@@ -56,23 +56,25 @@ public class EntitiesManager {
         }
     }
     public void moveEntities(){
-        switch (playing.getCalculation().calculateDirection()){
-            case "NORTH":
-                moveUp();
-                playing.getTempoValue().assignTempDirection("NORTH");
-                break;
-            case "SOUTH":
-                moveDown();
-                playing.getTempoValue().assignTempDirection("SOUTH");
-                break;
-            case "WEST":
-                moveLeft();
-                playing.getTempoValue().assignTempDirection("WEST");
-                break;
-            case "EAST":
-                moveRight();
-                playing.getTempoValue().assignTempDirection("EAST");
-                break;
+        if(!playing.getUndo().isUndoUsed()){
+            switch (playing.getCalculation().calculateDirection()){
+                case "NORTH":
+                    moveUp();
+                    playing.getTempoValue().assignTempDirection("NORTH");
+                    break;
+                case "SOUTH":
+                    moveDown();
+                    playing.getTempoValue().assignTempDirection("SOUTH");
+                    break;
+                case "WEST":
+                    moveLeft();
+                    playing.getTempoValue().assignTempDirection("WEST");
+                    break;
+                case "EAST":
+                    moveRight();
+                    playing.getTempoValue().assignTempDirection("EAST");
+                    break;
+            }
         }
     }
     public boolean checkTileOccupied(int num){
@@ -341,7 +343,7 @@ public class EntitiesManager {
     public void update(){
         moveEntities();
         createEntitiesPerMove();
-//        testEntities();
+        testEntities();
 //        OccupiedTile();
         for (Entities entities:entitiesList){
             entities.update();
