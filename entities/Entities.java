@@ -17,6 +17,15 @@ public class Entities {
     }
     private boolean isEntitiesNewlyCreated = false;
     private boolean isEntitiesNewlyCombined = false;
+    private boolean isEntitiesNewlyDeleted = false;
+
+    public boolean isEntitiesNewlyDeleted() {
+        return isEntitiesNewlyDeleted;
+    }
+
+    public void setEntitiesNewlyDeleted(boolean entitiesNewlyDeleted) {
+        isEntitiesNewlyDeleted = entitiesNewlyDeleted;
+    }
 
     public boolean isEntitiesNewlyCombined() {
         return isEntitiesNewlyCombined;

@@ -33,6 +33,9 @@ public class MouseListeners implements MouseListener, MouseMotionListener {
             case MENU:
                  w.getMenu().MouseClicked(e.getX(),e.getY());
                  break;
+            case PLAYING:
+                w.getPlaying().mouseClicked(e.getX(),e.getY());
+                break;
         }
     }
 

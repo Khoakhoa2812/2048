@@ -1,9 +1,13 @@
 package gameStates;
 
+import Audio.Music;
 import Board.Board4x4;
 import Calculation.TempoValue;
 import Calculation.calculation;
 import Calculation.tileCombination;
+import Feature.Reset;
+import Feature.Score;
+import Feature.Undo;
 import entities.EntitiesManager;
 import entities.EntitiesStorage;
 
@@ -23,6 +27,9 @@ public class Playing implements sceneMethods{
     private tileCombination TileCombination;
     private EntitiesStorage entitiesStorage;
     private TempoValue tempoValue;
+    private Undo undo;
+    private Reset reset;
+    private Score score;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
     }
@@ -51,6 +58,7 @@ public class Playing implements sceneMethods{
         }
     }
     public Playing(){
+        Music.backgroundMusic();
         initComponent();
         initAction();
     }
@@ -66,6 +74,13 @@ public class Playing implements sceneMethods{
         TileCombination = tileCombination.createInstance(this);
         entitiesStorage = EntitiesStorage.createInstance(this);
         tempoValue = TempoValue.createInstance(this);
+        undo = Undo.createInstance(this);
+        reset = Reset.createInstance(this);
+        score = Score.createInstance(this);
+    }
+
+    public Score getScore() {
+        return score;
     }
 
     public TempoValue getTempoValue() {
@@ -82,6 +97,10 @@ public class Playing implements sceneMethods{
             isDragCompleted = false;
         }
     }
+    public void mouseClicked(int x, int y){
+        undo.UndoMove(x,y);
+        reset.resetMatch(x,y);
+    }
     public void mouseDrag(MouseEvent e){
         isDragCompleted = false;
         if(!isDragged){
@@ -89,6 +108,7 @@ public class Playing implements sceneMethods{
             initY = e.getY();
             isDragged = true;
         }
+        undo.storeCurrentEntities();
     }
 
     public double getInitX() {
@@ -115,13 +135,17 @@ public class Playing implements sceneMethods{
         isDragCompleted = dragCompleted;
     }
 
+    public Undo getUndo() {
+        return undo;
+    }
+
     public void mouseRelease(MouseEvent e){
         if(isDragged){
             finalX = e.getX();
             finalY = e.getY();
             isDragged = false;
             isDragCompleted = true;
-            entitiesManager.releaseNewEntities();
+            undo.setUndoUsed(false);
             entitiesManager.ageTile();
             if(tempoValue.getCurrDirection() != Calculation.calculateDirection()){
                 entitiesManager.setLimitPerCreation(false);
@@ -130,11 +154,15 @@ public class Playing implements sceneMethods{
     }
     public void update(){
         entitiesManager.update();
+        undo.update();
     }
     @Override
     public void render(Graphics g, Image img) {
         g.drawImage(img,0,100,640,540,null);
         entitiesManager.EntitiesRender(g);
+        undo.render(g);
+        reset.render(g);
+        score.render(g);
 //        board4x4.render(g);
     }
 }

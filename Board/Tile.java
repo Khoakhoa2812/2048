@@ -9,6 +9,15 @@ public class Tile {
     private final int width = 157;
     private final int height = 130;
     private Rectangle Bound = new Rectangle();
+    private int valueHold;
+
+    public int getValueHold() {
+        return valueHold;
+    }
+
+    public void setValueHold(int valueHold) {
+        this.valueHold = valueHold;
+    }
 
     public int getTileNum() {
         return tileNum;

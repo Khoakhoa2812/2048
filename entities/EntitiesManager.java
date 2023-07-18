@@ -56,23 +56,25 @@ public class EntitiesManager {
         }
     }
     public void moveEntities(){
-        switch (playing.getCalculation().calculateDirection()){
-            case "NORTH":
-                moveUp();
-                playing.getTempoValue().assignTempDirection("NORTH");
-                break;
-            case "SOUTH":
-                moveDown();
-                playing.getTempoValue().assignTempDirection("SOUTH");
-                break;
-            case "WEST":
-                moveLeft();
-                playing.getTempoValue().assignTempDirection("WEST");
-                break;
-            case "EAST":
-                moveRight();
-                playing.getTempoValue().assignTempDirection("EAST");
-                break;
+        if(!playing.getUndo().isUndoUsed()){
+            switch (playing.getCalculation().calculateDirection()){
+                case "NORTH":
+                    moveUp();
+                    playing.getTempoValue().assignTempDirection("NORTH");
+                    break;
+                case "SOUTH":
+                    moveDown();
+                    playing.getTempoValue().assignTempDirection("SOUTH");
+                    break;
+                case "WEST":
+                    moveLeft();
+                    playing.getTempoValue().assignTempDirection("WEST");
+                    break;
+                case "EAST":
+                    moveRight();
+                    playing.getTempoValue().assignTempDirection("EAST");
+                    break;
+            }
         }
     }
     public boolean checkTileOccupied(int num){
@@ -258,7 +260,6 @@ public class EntitiesManager {
         if(checkAllPreEntitiesMove()){
             for(Entities entities:entitiesList){
                 entities.setMoveCompleted(false);
-                entities.setEntitiesNewlyCombined(false);
             }
         }
     }
@@ -306,6 +307,8 @@ public class EntitiesManager {
     public void ageTile(){
         for(Entities entities: entitiesList){
             entities.setEntitiesNewlyCreated(false);
+            entities.setEntitiesNewlyCombined(false);
+            entities.setEntitiesNewlyDeleted(false);
         }
     }
     public void testEntities(){
@@ -341,6 +344,7 @@ public class EntitiesManager {
     public void update(){
         moveEntities();
         createEntitiesPerMove();
+        releaseNewEntities();
 //        testEntities();
 //        OccupiedTile();
         for (Entities entities:entitiesList){

@@ -23,6 +23,8 @@ public class tileCombination {
             if(playing.getCalculation().doCalculation(entity1,entity2) == availableValueCombination[i] && entity1.isStatus() && entity2.isStatus() && !entity1.isEntitiesNewlyCombined() && !entity2.isEntitiesNewlyCombined()){
                 entity1.setStatus(false);
                 entity2.setStatus(false);
+                entity1.setEntitiesNewlyDeleted(true);
+                entity2.setEntitiesNewlyDeleted(true);
                 entity1.setNum(1);
                 entity2.setNum(1);
                 switch (i){
@@ -34,6 +36,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(4);
                                 break;
                             }
                         }
@@ -46,6 +49,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(8);
                                 break;
                             }
                         }
@@ -58,6 +62,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(16);
                                 break;
                             }
                         }
@@ -70,6 +75,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(32);
                                 break;
                             }
                         }
@@ -82,6 +88,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(64);
                                 break;
                             }
                         }
@@ -94,6 +101,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(128);
                                 break;
                             }
                         }
@@ -106,6 +114,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(256);
                                 break;
                             }
                         }
@@ -118,6 +127,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(512);
                                 break;
                             }
                         }
@@ -130,6 +140,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(1024);
                                 break;
                             }
                         }
