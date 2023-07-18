@@ -36,6 +36,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(4);
                                 break;
                             }
                         }
@@ -48,6 +49,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(8);
                                 break;
                             }
                         }
@@ -60,6 +62,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(16);
                                 break;
                             }
                         }
@@ -72,6 +75,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(32);
                                 break;
                             }
                         }
@@ -84,6 +88,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(64);
                                 break;
                             }
                         }
@@ -96,6 +101,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(128);
                                 break;
                             }
                         }
@@ -108,6 +114,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(256);
                                 break;
                             }
                         }
@@ -120,6 +127,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(512);
                                 break;
                             }
                         }
@@ -132,6 +140,7 @@ public class tileCombination {
                                 entities.setTileNum(entity2.getTileNum());
                                 entities.setNum(1);
                                 entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(1024);
                                 break;
                             }
                         }

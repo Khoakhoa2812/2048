@@ -260,7 +260,6 @@ public class EntitiesManager {
         if(checkAllPreEntitiesMove()){
             for(Entities entities:entitiesList){
                 entities.setMoveCompleted(false);
-                entities.setEntitiesNewlyCombined(false);
             }
         }
     }
@@ -308,6 +307,8 @@ public class EntitiesManager {
     public void ageTile(){
         for(Entities entities: entitiesList){
             entities.setEntitiesNewlyCreated(false);
+            entities.setEntitiesNewlyCombined(false);
+            entities.setEntitiesNewlyDeleted(false);
         }
     }
     public void testEntities(){
@@ -343,7 +344,8 @@ public class EntitiesManager {
     public void update(){
         moveEntities();
         createEntitiesPerMove();
-        testEntities();
+        releaseNewEntities();
+//        testEntities();
 //        OccupiedTile();
         for (Entities entities:entitiesList){
             entities.update();
