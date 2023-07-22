@@ -1,5 +1,6 @@
 package entities;
 
+import Board.Tile;
 import gameStates.Playing;
 
 import java.awt.*;
@@ -46,7 +47,7 @@ public class EntitiesManager {
         try {
             CreateRandomType(type1,checkOccupied(num1));
         } catch (StackOverflowError e){
-            System.out.println("You Lose");
+
         }
     }
     public void createEntitiesPerMove(){
@@ -275,6 +276,25 @@ public class EntitiesManager {
         }
         timeCast = 0;
         return num;
+    }
+    public boolean checkStream(){
+        for(int i = 0;i<playing.getBoard4x4().getTile().length;i++){
+            for(Entities entities:entitiesList){
+                if(entities.isStatus()){
+                    try{
+                        if(!playing.getBoard4x4().getTile()[i+1].isOccupied(entities) ||
+                                !playing.getBoard4x4().getTile()[i-1].isOccupied(entities) ||
+                                !playing.getBoard4x4().getTile()[i+4].isOccupied(entities) ||
+                                !playing.getBoard4x4().getTile()[i-4].isOccupied(entities)){
+                            return false;
+                        }
+                    } catch (IndexOutOfBoundsException e){
+
+                    }
+                }
+            }
+        }
+        return true;
     }
     public void CreateRandomType(int type, int num){
         switch (type){

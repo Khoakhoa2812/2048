@@ -8,6 +8,7 @@ import Calculation.tileCombination;
 import Feature.Reset;
 import Feature.Score;
 import Feature.Undo;
+import Win_Lose.Lose;
 import entities.EntitiesManager;
 import entities.EntitiesStorage;
 
@@ -30,6 +31,7 @@ public class Playing implements sceneMethods{
     private Undo undo;
     private Reset reset;
     private Score score;
+    private Lose lose;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
     }
@@ -77,6 +79,7 @@ public class Playing implements sceneMethods{
         undo = Undo.createInstance(this);
         reset = Reset.createInstance(this);
         score = Score.createInstance(this);
+        lose = Lose.createInstance(this);
     }
 
     public Score getScore() {
@@ -155,6 +158,7 @@ public class Playing implements sceneMethods{
     public void update(){
         entitiesManager.update();
         undo.update();
+        lose.update();
     }
     @Override
     public void render(Graphics g, Image img) {
@@ -163,6 +167,7 @@ public class Playing implements sceneMethods{
         undo.render(g);
         reset.render(g);
         score.render(g);
+        lose.render(g);
 //        board4x4.render(g);
     }
 }
