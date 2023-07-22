@@ -21,8 +21,8 @@ public class Lose {
     private Image Lose_background;
     private Toolkit t = Toolkit.getDefaultToolkit();
     public void render(Graphics g){
-        Lose_background = t.getImage(getClass().getResource("/resources/youlose_background.png"));
         Lose_word = t.getImage(getClass().getResource("/resources/youlose_word.png"));
+        Lose_background = t.getImage(getClass().getResource("/resources/youlose_background.png"));
         if(isLose){
             g.drawImage(Lose_word,120,150,400,400,null);
             g.drawImage(Lose_background,0,100,640,540,null);
