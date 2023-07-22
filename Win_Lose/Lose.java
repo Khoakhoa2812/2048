@@ -17,12 +17,10 @@ public class Lose {
         }
         return null;
     }
-    private Image Lose_word;
-    private Image Lose_background;
     private Toolkit t = Toolkit.getDefaultToolkit();
+    private Image Lose_word = t.getImage(getClass().getResource("/resources/youlose_word.png"));
+    private Image Lose_background =  t.getImage(getClass().getResource("/resources/youlose_background.png"));
     public void render(Graphics g){
-        Lose_word = t.getImage(getClass().getResource("/resources/youlose_word.png"));
-        Lose_background = t.getImage(getClass().getResource("/resources/youlose_background.png"));
         if(isLose){
             g.drawImage(Lose_word,120,150,400,400,null);
             g.drawImage(Lose_background,0,100,640,540,null);
