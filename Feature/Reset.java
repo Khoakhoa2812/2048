@@ -37,6 +37,7 @@ public class Reset {
                 entities.setMoveCompleted(false);
             }
             playing.getScore().setScore(0);
+            playing.getLose().setLose(false);
         }
     }
 }

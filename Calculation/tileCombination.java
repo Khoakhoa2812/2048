@@ -150,5 +150,108 @@ public class tileCombination {
             }
         }
     }
-
+    public boolean checkCombination(){
+        if(playing.getEntitiesManager().checkStream()){
+            for(int i = 0;i<playing.getBoard4x4().getTile().length;i++){
+                for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                    if(entities.isStatus()){
+                        if(i == 0){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i+1 || entities1.getTileNum() == i+4)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if(i>0 && i<3){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i+1 || entities1.getTileNum() == i+4 || entities1.getTileNum() == i-1)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if (i == 3){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i-1 || entities1.getTileNum() == i+4)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if(i == 4 || i == 8){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i+4 || entities1.getTileNum() == i-4 || entities1.getTileNum() == i+1)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if((i>4 && i<7)||(i>8 && i<11)){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i+1 || entities1.getTileNum() == i+4 || entities1.getTileNum() == i-1 || entities1.getTileNum() == i-4)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if(i == 7 || i == 11){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i+4 || entities1.getTileNum() == i-4 || entities1.getTileNum() == i-1)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if(i == 12){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i+1 || entities1.getTileNum() == i-4)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if(i == 15){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i-1 || entities1.getTileNum() == i-4)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        } else if(i >12 && i<15){
+                            if(entities.getTileNum() == i){
+                                for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                    if(entities1.isStatus() && (entities1.getTileNum() == i+1 || entities1.getTileNum() == i-4 || entities1.getTileNum() == i-1)){
+                                        if(entities.getValue() == entities1.getValue()){
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
 }
