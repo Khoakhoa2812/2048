@@ -86,6 +86,10 @@ public class Playing implements sceneMethods{
         return score;
     }
 
+    public Lose getLose() {
+        return lose;
+    }
+
     public TempoValue getTempoValue() {
         return tempoValue;
     }

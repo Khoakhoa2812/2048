@@ -29,10 +29,15 @@ public class Lose {
     private boolean isLose = false;
 
     public void gameLose(){
-        if(playing.getEntitiesManager().checkStream()){
+        if(playing.getTileCombination().checkCombination()){
             isLose = true;
         }
     }
+
+    public void setLose(boolean lose) {
+        isLose = lose;
+    }
+
     public void update(){
         gameLose();
     }

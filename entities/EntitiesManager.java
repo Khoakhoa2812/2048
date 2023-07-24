@@ -278,23 +278,22 @@ public class EntitiesManager {
         return num;
     }
     public boolean checkStream(){
-        for(int i = 0;i<playing.getBoard4x4().getTile().length;i++){
+        int countAlived = 0;
+        for(Tile tile:playing.getBoard4x4().getTile()){
             for(Entities entities:entitiesList){
                 if(entities.isStatus()){
-                    try{
-                        if(!playing.getBoard4x4().getTile()[i+1].isOccupied(entities) ||
-                                !playing.getBoard4x4().getTile()[i-1].isOccupied(entities) ||
-                                !playing.getBoard4x4().getTile()[i+4].isOccupied(entities) ||
-                                !playing.getBoard4x4().getTile()[i-4].isOccupied(entities)){
-                            return false;
-                        }
-                    } catch (IndexOutOfBoundsException e){
-
+                    if(tile.isOccupied(entities)){
+                        countAlived++;
+                        break;
                     }
                 }
             }
         }
-        return true;
+        if(countAlived == 16){
+            return true;
+        } else {
+            return false;
+        }
     }
     public void CreateRandomType(int type, int num){
         switch (type){
