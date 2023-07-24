@@ -14,7 +14,7 @@ public class tileCombination {
         }
     }
     private Playing playing;
-    private int[] availableValueCombination = {4,8,16,32,64,128,256,512,1024};
+    private int[] availableValueCombination = {4,8,16,32,64,128,256,512,1024,2048};
     public tileCombination(Playing playing){
         this.playing = playing;
     }
@@ -135,6 +135,19 @@ public class tileCombination {
                     case 8:
                         for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
                             if(entities.getValue() == 1024 && entities.getNum() == 0 && !entities.isStatus()){
+                                entities.setStatus(true);
+                                entities.setPosition(playing.getBoard4x4().getTile()[entity2.getTileNum()]);
+                                entities.setTileNum(entity2.getTileNum());
+                                entities.setNum(1);
+                                entities.setEntitiesNewlyCombined(true);
+                                playing.getScore().addScore(1024);
+                                break;
+                            }
+                        }
+                        break;
+                    case 9:
+                        for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                            if(entities.getValue() == 2048 && entities.getNum() == 0 && !entities.isStatus()){
                                 entities.setStatus(true);
                                 entities.setPosition(playing.getBoard4x4().getTile()[entity2.getTileNum()]);
                                 entities.setTileNum(entity2.getTileNum());

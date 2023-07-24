@@ -29,6 +29,7 @@ public class EntitiesStorage {
         tile256Store();
         tile512Store();
         tile1024Store();
+        tile2048Store();
         rejectStatus();
     }
     public void tile2Store(){
@@ -80,6 +81,9 @@ public class EntitiesStorage {
         for(int i = 0;i<3;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile1024(playing.getBoard4x4().getTile()[0]));
         }
+    }
+    public void tile2048Store(){
+        playing.getEntitiesManager().getEntitiesList().add(new Tile2048(playing.getBoard4x4().getTile()[0]));
     }
     public void rejectStatus(){
         for(Entities entities:playing.getEntitiesManager().getEntitiesList()){

@@ -9,6 +9,7 @@ import Feature.Reset;
 import Feature.Score;
 import Feature.Undo;
 import Win_Lose.Lose;
+import Win_Lose.Win;
 import entities.EntitiesManager;
 import entities.EntitiesStorage;
 
@@ -32,6 +33,7 @@ public class Playing implements sceneMethods{
     private Reset reset;
     private Score score;
     private Lose lose;
+    private Win win;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
     }
@@ -80,6 +82,11 @@ public class Playing implements sceneMethods{
         reset = Reset.createInstance(this);
         score = Score.createInstance(this);
         lose = Lose.createInstance(this);
+        win = Win.createInstance(this);
+    }
+
+    public Win getWin() {
+        return win;
     }
 
     public Score getScore() {
@@ -163,6 +170,7 @@ public class Playing implements sceneMethods{
         entitiesManager.update();
         undo.update();
         lose.update();
+        win.update();
     }
     @Override
     public void render(Graphics g, Image img) {
@@ -172,6 +180,7 @@ public class Playing implements sceneMethods{
         reset.render(g);
         score.render(g);
         lose.render(g);
+        win.render(g);
 //        board4x4.render(g);
     }
 }
