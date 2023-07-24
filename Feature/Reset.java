@@ -38,6 +38,7 @@ public class Reset {
             }
             playing.getScore().setScore(0);
             playing.getLose().setLose(false);
+            playing.getWin().setWin(false);
         }
     }
 }
