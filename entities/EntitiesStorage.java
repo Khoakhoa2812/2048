@@ -33,32 +33,32 @@ public class EntitiesStorage {
         rejectStatus();
     }
     public void tile2Store(){
-        for(int i = 0;i<200;i++){
+        for(int i = 0;i<500;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile2(playing.getBoard4x4().getTile()[0]));
         }
     }
     public void tile4Store(){
-        for(int i = 0;i<200;i++){
+        for(int i = 0;i<500;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile4(playing.getBoard4x4().getTile()[0]));
         }
     }
     public void tile8Store(){
-        for(int i = 0;i<150;i++){
+        for(int i = 0;i<300;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile8(playing.getBoard4x4().getTile()[0]));
         }
     }
     public void tile16Store(){
-        for(int i = 0;i<100;i++){
+        for(int i = 0;i<200;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile16(playing.getBoard4x4().getTile()[0]));
         }
     }
     public void tile32Store(){
-        for(int i = 0;i<75;i++){
+        for(int i = 0;i<150;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile32(playing.getBoard4x4().getTile()[0]));
         }
     }
     public void tile64Store(){
-        for(int i = 0;i<50;i++){
+        for(int i = 0;i<150;i++){
             playing.getEntitiesManager().getEntitiesList().add(new Tile64(playing.getBoard4x4().getTile()[0]));
         }
     }
