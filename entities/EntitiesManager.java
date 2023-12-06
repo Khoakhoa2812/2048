@@ -113,7 +113,7 @@ public class EntitiesManager {
     public void moveUp() {
         Tile[][] boardTiles = playing.getBoard4x4().getTile();
         for (int col = 0; col < boardTiles[0].length; col++) {
-            for (int row = 1; row < boardTiles.length; row++) {
+            for (int row = 0; row < boardTiles.length; row++) {
                 int entityTileNum = row * boardTiles.length + col;
                 for (Entities entity : entitiesList) {
                     if (entity.getTileNum() == entityTileNum && entity.isStatus() && !entity.isEntitiesNewlyCreated()) {
@@ -130,8 +130,9 @@ public class EntitiesManager {
                                 }
                                 entity.setMoveCompleted(true);
                             }
+                        } else {
+                            entity.setMoveCompleted(true);
                         }
-                        entity.setMoveCompleted(true);
                     }
                 }
             }
@@ -141,7 +142,7 @@ public class EntitiesManager {
     public void moveDown() {
         Tile[][] boardTiles = playing.getBoard4x4().getTile();
         for (int col = 0; col < boardTiles[0].length; col++) {
-            for (int row = boardTiles.length - 2; row >= 0; row--) {
+            for (int row = boardTiles.length - 1; row >= 0; row--) {
                 int entityTileNum = row * boardTiles.length + col;
                 for (Entities entity : entitiesList) {
                     if (entity.getTileNum() == entityTileNum && entity.isStatus() && !entity.isEntitiesNewlyCreated()) {
@@ -158,8 +159,9 @@ public class EntitiesManager {
                                 }
                                 entity.setMoveCompleted(true);
                             }
+                        } else {
+                            entity.setMoveCompleted(true);
                         }
-                        entity.setMoveCompleted(true);
                     }
                 }
             }
@@ -169,7 +171,7 @@ public class EntitiesManager {
     public void moveLeft() {
         Tile[][] boardTiles = playing.getBoard4x4().getTile();
         for (int row = 0; row < boardTiles.length; row++) {
-            for (int col = 1; col < boardTiles[row].length; col++) {
+            for (int col = 0; col < boardTiles[row].length; col++) {
                 int entityTileNum = row * boardTiles.length + col;
                 for (Entities entity : entitiesList) {
                     if (entity.getTileNum() == entityTileNum && entity.isStatus() && !entity.isEntitiesNewlyCreated()) {
@@ -186,8 +188,9 @@ public class EntitiesManager {
                                 }
                                 entity.setMoveCompleted(true);
                             }
+                        } else {
+                            entity.setMoveCompleted(true);
                         }
-                        entity.setMoveCompleted(true);
                     }
                 }
             }
@@ -197,7 +200,7 @@ public class EntitiesManager {
     public void moveRight() {
         Tile[][] boardTiles = playing.getBoard4x4().getTile();
         for (int row = 0; row < boardTiles.length; row++) {
-            for (int col = boardTiles[row].length - 2; col >= 0; col--) {
+            for (int col = boardTiles[row].length - 1; col >= 0; col--) {
                 int entityTileNum = row * boardTiles.length + col;
                 for (Entities entity : entitiesList) {
                     if (entity.getTileNum() == entityTileNum && entity.isStatus() && !entity.isEntitiesNewlyCreated()) {
@@ -214,8 +217,9 @@ public class EntitiesManager {
                                 }
                                 entity.setMoveCompleted(true);
                             }
+                        } else {
+                            entity.setMoveCompleted(true);
                         }
-                        entity.setMoveCompleted(true);
                     }
                 }
             }
