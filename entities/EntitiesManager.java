@@ -46,6 +46,7 @@ public class EntitiesManager {
         return entitiesList;
     }
 
+
     public void createEntities() {
         int num1 = random.nextInt(16);
         int type1 = random.nextInt(2);
