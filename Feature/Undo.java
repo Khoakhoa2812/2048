@@ -1,7 +1,9 @@
 package Feature;
 
 import Board.Tile;
+import entities.EntitesStateManager;
 import entities.Entities;
+import entities.EntitiesStorage;
 import gameStates.Playing;
 
 import java.awt.*;
@@ -44,7 +46,6 @@ public class Undo {
         UndoButton = t.getImage(getClass().getResource("/resources/Undo.png"));
         UndoButtonUnavailable = t.getImage(getClass().getResource("/resources/undo_unavailable.png"));
         g.drawImage(UndoButton, 50, 30, 50, 50, null);
-        undoBlockedRender(g);
     }
 
     public void storeCurrentEntities() {
@@ -73,14 +74,29 @@ public class Undo {
     }
 
     public void UndoMove(int x, int y) {
-        if (UndoButtonBound.contains(x, y)) {
-            for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-                UndoStatus(entities);
+        if(UndoButtonBound.contains(x,y)){
+            EntitesStateManager entitesStateManager = playing.getBoardStateHolder().pop();
+            int count = 0;
+            for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                if(entities.getNo() == count){
+                    entities.setNum(entitesStateManager.getNumList().get(count));
+                    entities.setMoveCompleted(entitesStateManager.getIsMoveCompletedList().get(count));
+                    entities.setEntitiesNewlyCombined(entitesStateManager.getIsNewlyCombinedList().get(count));
+                    entities.setEntitiesNewlyDeleted(entitesStateManager.getIsNewlyDeletedList().get(count));
+                    entities.setEntitiesNewlyCreated(entitesStateManager.getIsNewlyCreatedList().get(count));
+                    entities.setStatus(entitesStateManager.getStatusList().get(count));
+                    entities.setTileNum(entitesStateManager.getTileNumList().get(count));
+                    for(int i = 0;i<playing.getBoard4x4().getTile().length;i++){
+                        for(int j = 0;j<playing.getBoard4x4().getTile()[i].length;j++){
+                            if(playing.getBoard4x4().getTile()[i][j].getTileNum() == entitesStateManager.getTileNumList().get(count)){
+                                entities.setPosition(playing.getBoard4x4().getTile()[i][j]);
+                            }
+                        }
+                    }
+                }
+                count++;
             }
-            // checkQuantity();
-            for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-                UndoPosition(entities);
-            }
+            playing.getScore().setCurrentScore(playing.getBoardStateHolder().scorePop());
             isUndoUsed = true;
         }
         // checkQuantity();

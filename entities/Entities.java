@@ -6,6 +6,7 @@ import java.awt.*;
 
 public class Entities {
     private int Num = 0;
+    private int No;
     private boolean status = true;
 
     public boolean isMoveCompleted() {
@@ -118,6 +119,10 @@ public class Entities {
         this.value = value;
     }
 
+    public int getNo() {
+        return No;
+    }
+
     public Rectangle getBound() {
         return Bound;
     }
@@ -138,9 +143,10 @@ public class Entities {
         this.status = status;
     }
 
-    public Entities(Tile tile){
+    public Entities(Tile tile, int No){
         setPosition(tile);
         this.TileNum = tile.getTileNum();
+        this.No = No;
     }
     public void EntityRender(Graphics g){
         if(status){
