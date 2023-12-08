@@ -29,15 +29,15 @@ public class Score {
     }
 
     public void render(Graphics g){
-        ScoreBox = t.getImage(getClass().getResource("/resources/ScoreBox.png"));
+        ScoreBox = t.getImage(getClass().getResource("/resources/ScoreBox2.0.png"));
         g.drawImage(ScoreBox,400,10,200,80,null);
         scoreDisplay(g);
     }
     public void scoreDisplay(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setFont(new Font("Arial",Font.BOLD,42));
+        g2d.setFont(new Font("Serif",Font.BOLD,40));
         g2d.setColor(Color.WHITE);
-        g2d.drawString(String.format("%d",score),setAlignment(),80);
+        g2d.drawString(String.format("%d",score),setAlignment(),75);
     }
     public int setAlignment(){
         if(score < 10){

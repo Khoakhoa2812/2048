@@ -174,7 +174,7 @@ public class Playing implements sceneMethods{
     }
     @Override
     public void render(Graphics g, Image img) {
-        g.drawImage(img,0,100,640,540,null);
+        g.drawImage(img,0,100,640,640,null);
         entitiesManager.EntitiesRender(g);
         undo.render(g);
         reset.render(g);

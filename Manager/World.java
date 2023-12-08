@@ -10,7 +10,7 @@ import gameStates.Menu;
 
 public class World extends JPanel implements Runnable{
     private int width = 640;
-    private int height = 640;
+    private int height = 740;
     private double FPS_SET = 60.0;
     private MouseListeners mouseListeners;
     public Menu getMenu() {

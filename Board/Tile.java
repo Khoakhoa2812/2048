@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class Tile {
     private int tileNum;
-    private final int width = 157;
-    private final int height = 130;
+    private final int width = 158;
+    private final int height = 158;
     private Rectangle Bound = new Rectangle();
     private int valueHold;
 
