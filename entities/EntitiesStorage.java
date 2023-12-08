@@ -36,25 +36,25 @@ public class EntitiesStorage {
     }
 
     public void tile2Store() {
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 1000; i++) {
             playing.getEntitiesManager().getEntitiesList().add(new Tile2(playing.getBoard4x4().getTile()[0][0]));
         }
     }
 
     public void tile4Store() {
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 1000; i++) {
             playing.getEntitiesManager().getEntitiesList().add(new Tile4(playing.getBoard4x4().getTile()[0][0]));
         }
     }
 
     public void tile8Store() {
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 1000; i++) {
             playing.getEntitiesManager().getEntitiesList().add(new Tile8(playing.getBoard4x4().getTile()[0][0]));
         }
     }
 
     public void tile16Store() {
-        for (int i = 0; i < 200; i++) {
+        for (int i = 0; i < 1000; i++) {
             playing.getEntitiesManager().getEntitiesList().add(new Tile16(playing.getBoard4x4().getTile()[0][0]));
         }
     }
