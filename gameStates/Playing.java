@@ -177,8 +177,9 @@ public class Playing implements sceneMethods{
     }
     public void update(){
         entitiesManager.update();
-//        lose.update();
-//        win.update();
+        boardStateHolder.update();
+        lose.update();
+        win.update();
     }
     @Override
     public void render(Graphics g, Image img) {
