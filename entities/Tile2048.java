@@ -4,8 +4,8 @@ import Board.Tile;
 
 public class Tile2048 extends Entities{
 
-    public Tile2048(Tile tile) {
-        super(tile);
+    public Tile2048(Tile tile, int No) {
+        super(tile, No);
         setValue(2048);
         initImage();
     }

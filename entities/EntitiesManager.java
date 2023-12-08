@@ -15,11 +15,6 @@ public class EntitiesManager {
         this.playing = playing;
     }
 
-    public void initTile() {
-        entitiesList.add(new Tile2(this.playing.getBoard4x4().getTile()[0][3]));
-        entitiesList.add(new Tile4(this.playing.getBoard4x4().getTile()[1][3]));
-    }
-
     private static EntitiesManager instance;
 
     public static EntitiesManager createInstance(Playing playing) {
@@ -65,7 +60,7 @@ public class EntitiesManager {
     }
 
     public void moveEntities() {
-        if (!playing.getUndo().isUndoUsed()) {
+        if(!playing.getUndo().isUndoUsed()){
             switch (playing.getCalculation().calculateDirection()) {
                 case "NORTH":
                     moveUp();
@@ -96,21 +91,6 @@ public class EntitiesManager {
         return false;
     }
 
-    public String checkOccupiedNum(int num) {
-        for (Entities entities : entitiesList) {
-            if (playing.getBoard4x4().getTile()[num / 4][num % 4].isOccupied(entities) && entities.isStatus()) {
-                return "occupied";
-            }
-        }
-        return "non-occupied";
-    }
-
-    public void OccupiedTile() {
-        for (int i = 0; i < 16; i++) {
-            System.out.println("Current tile: " + i + " : " + checkOccupiedNum(i));
-        }
-    }
-
     public void moveUp() {
         Tile[][] boardTiles = playing.getBoard4x4().getTile();
         for (int col = 0; col < boardTiles[0].length; col++) {
@@ -122,7 +102,6 @@ public class EntitiesManager {
                         if (targetRow >= 0) {
                             if (!checkTileOccupied(targetRow * boardTiles.length + col)) {
                                 entity.move("UP", boardTiles[targetRow][col]);
-                                System.out.println(entity.getTileNum());
                             } else {
                                 for (Entities entities1 : entitiesList) {
                                     if (entities1.getTileNum() == entity.getTileNum() - 4) {
@@ -151,7 +130,6 @@ public class EntitiesManager {
                         if (targetRow < boardTiles.length) {
                             if (!checkTileOccupied(targetRow * boardTiles.length + col)) {
                                 entity.move("DOWN", boardTiles[targetRow][col]);
-                                System.out.println(entity.getTileNum());
                             } else {
                                 for (Entities entities1 : entitiesList) {
                                     if (entities1.getTileNum() == entity.getTileNum() + 4) {
@@ -180,7 +158,6 @@ public class EntitiesManager {
                         if (targetColumn >= 0) {
                             if (!checkTileOccupied(row * boardTiles.length + targetColumn)) {
                                 entity.move("LEFT", boardTiles[row][targetColumn]);
-                                System.out.println(entity.getTileNum());
                             } else {
                                 for (Entities entities1 : entitiesList) {
                                     if (entities1.getTileNum() == entity.getTileNum() - 1) {
@@ -209,7 +186,6 @@ public class EntitiesManager {
                         if (targetColumn < boardTiles[row].length) {
                             if (!checkTileOccupied(row * boardTiles.length + targetColumn)) {
                                 entity.move("RIGHT", boardTiles[row][targetColumn]);
-                                System.out.println(entity.getTileNum());
                             } else {
                                 for (Entities entities1 : entitiesList) {
                                     if (entities1.getTileNum() == entity.getTileNum() + 1) {
@@ -355,9 +331,5 @@ public class EntitiesManager {
         createEntitiesPerMove();
         releaseNewEntities();
         // testEntities();
-        // OccupiedTile();
-        for (Entities entities : entitiesList) {
-            entities.update();
-        }
     }
 }

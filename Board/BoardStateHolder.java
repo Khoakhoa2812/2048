@@ -1,5 +1,6 @@
 package Board;
 
+import entities.EntitesStateManager;
 import entities.Entities;
 import gameStates.Playing;
 
@@ -19,15 +20,35 @@ public class BoardStateHolder {
         }
         return null;
     }
-  
-    public void storeState(){
-        for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
-            if(entities.isStatus()){
+    private boolean isAssigned = false;
 
-            }
-        }
+    public boolean isAssigned() {
+        return isAssigned;
     }
-    public void storeEntitiesActive(Entities entities){
 
+    public void setAssigned(boolean assigned) {
+        isAssigned = assigned;
+    }
+
+    private int top = -1;
+    private int scoreTop = -1;
+    private List<EntitesStateManager> entitesStateManagerList = new ArrayList<>();
+    public void assignStateToStack(){
+        top++;
+        scoreTop++;
+        EntitesStateManager entitesStateManager = new EntitesStateManager(playing);
+        entitesStateManager.assignEntitiesState();
+        entitesStateManagerList.add(top,entitesStateManager);
+        playing.getScore().getScoreStack().add(scoreTop,playing.getScore().getScore());
+    }
+    public EntitesStateManager pop(){
+        EntitesStateManager entitesStateManager = entitesStateManagerList.get(top);
+        top--;
+        return entitesStateManager;
+    }
+    public int scorePop(){
+        int score = playing.getScore().getScoreStack().get(scoreTop);
+        scoreTop--;
+        return score;
     }
 }
