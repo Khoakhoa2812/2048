@@ -20,14 +20,10 @@ public class BoardStateHolder {
         }
         return null;
     }
-    private boolean isAssigned = false;
+    private boolean isStackEmpty = false;
 
-    public boolean isAssigned() {
-        return isAssigned;
-    }
-
-    public void setAssigned(boolean assigned) {
-        isAssigned = assigned;
+    public boolean isStackEmpty() {
+        return isStackEmpty;
     }
 
     private int top = -1;
@@ -46,9 +42,19 @@ public class BoardStateHolder {
         top--;
         return entitesStateManager;
     }
+    public void checkStackEmpty(){
+        if(top == -1){
+            isStackEmpty = true;
+        } else {
+            isStackEmpty = false;
+        }
+    }
     public int scorePop(){
         int score = playing.getScore().getScoreStack().get(scoreTop);
         scoreTop--;
         return score;
+    }
+    public void update(){
+        checkStackEmpty();
     }
 }
