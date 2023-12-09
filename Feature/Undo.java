@@ -68,12 +68,16 @@ public class Undo {
                         entities.setEntitiesNewlyCreated(entitesStateManager.getIsNewlyCreatedList().get(count));
                         entities.setStatus(entitesStateManager.getStatusList().get(count));
                         entities.setTileNum(entitesStateManager.getTileNumList().get(count));
+                        entities.setValue(entitesStateManager.getValueList().get(count));
                         for(int i = 0;i<playing.getBoard4x4().getTile().length;i++){
                             for(int j = 0;j<playing.getBoard4x4().getTile()[i].length;j++){
                                 if(playing.getBoard4x4().getTile()[i][j].getTileNum() == entitesStateManager.getTileNumList().get(count)){
                                     entities.setPosition(playing.getBoard4x4().getTile()[i][j]);
                                 }
                             }
+                        }
+                        if(entities.isStatus()){
+                            System.out.println(entities.getTileNum());
                         }
                     }
                     count++;

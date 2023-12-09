@@ -58,6 +58,7 @@ public class Entities {
     private final int height = 158;
     private int TileNum;
     private int newTileNum;
+    private Tile tile;
     private Rectangle Bound;
 
     public Image getImageEntity() {
@@ -143,7 +144,12 @@ public class Entities {
         this.status = status;
     }
 
+    public Tile getTile() {
+        return tile;
+    }
+
     public Entities(Tile tile, int No){
+        this.tile = tile;
         setPosition(tile);
         this.TileNum = tile.getTileNum();
         this.No = No;

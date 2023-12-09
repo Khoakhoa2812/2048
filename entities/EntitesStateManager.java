@@ -83,6 +83,7 @@ public class EntitesStateManager {
             isNewlyDeletedList.add(count,entities.isEntitiesNewlyDeleted());
             isMoveCompletedList.add(count,entities.isMoveCompleted());
             count++;
+//            System.out.println(entities.getTileNum());
         }
     }
 }
