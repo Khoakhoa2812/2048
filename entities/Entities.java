@@ -54,8 +54,8 @@ public class Entities {
     }
 
     private double x,y;
-    private final int width = 157;
-    private final int height = 130;
+    private final int width = 158;
+    private final int height = 158;
     private int TileNum;
     private int newTileNum;
     private Rectangle Bound;
@@ -89,25 +89,25 @@ public class Entities {
         if(Bound.getX() != tile.getBound().getX() || Bound.getY() != tile.getBound().getY()){
             switch (Direction){
                 case "UP":
-                    Bound.setBounds((int)Bound.getX(),(int)Bound.getY()-68,width,height);
+                    Bound.setBounds((int)Bound.getX(),(int)Bound.getY()-80,width,height);
                     if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
                         TileNum = TileNum-4;
                     }
                     break;
                 case "DOWN":
-                    Bound.setBounds((int)Bound.getX(),(int)Bound.getY()+68,width,height);
+                    Bound.setBounds((int)Bound.getX(),(int)Bound.getY()+80,width,height);
                     if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
                         TileNum = TileNum+4;
                     }
                     break;
                 case "LEFT":
-                    Bound.setBounds((int)Bound.getX()-81,(int)Bound.getY(),width,height);
+                    Bound.setBounds((int)Bound.getX()-80,(int)Bound.getY(),width,height);
                     if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
                         TileNum = TileNum-1;
                     }
                     break;
                 case "RIGHT":
-                    Bound.setBounds((int)Bound.getX()+81,(int)Bound.getY(),width,height);
+                    Bound.setBounds((int)Bound.getX()+80,(int)Bound.getY(),width,height);
                     if(Bound.getX() == tile.getBound().getX() && Bound.getY() == tile.getBound().getY()){
                         TileNum = TileNum+1;
                     }
