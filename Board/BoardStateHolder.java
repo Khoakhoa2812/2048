@@ -54,7 +54,11 @@ public class BoardStateHolder {
         scoreTop--;
         return score;
     }
+    public void test(){
+        System.out.println(top);
+    }
     public void update(){
         checkStackEmpty();
+//        test();
     }
 }

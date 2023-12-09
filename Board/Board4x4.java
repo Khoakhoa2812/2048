@@ -36,7 +36,16 @@ public class Board4x4 {
             }
         }
     }
-
+    public void boardTest(){
+        for(int i = 0;i< tiles.length;i++){
+            for(int j = 0;j<tiles[i].length;j++){
+                System.out.println(tiles[i][j].getTileNum());
+            }
+        }
+    }
+    public void update(){
+//        boardTest();
+    }
     private Board4x4() {
         initTiles();
     }

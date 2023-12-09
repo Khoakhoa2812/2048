@@ -180,6 +180,7 @@ public class Playing implements sceneMethods{
         boardStateHolder.update();
         lose.update();
         win.update();
+        board4x4.update();
     }
     @Override
     public void render(Graphics g, Image img) {
