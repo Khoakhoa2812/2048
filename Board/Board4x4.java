@@ -23,7 +23,7 @@ public class Board4x4 {
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
                 tiles[row][col] = new Tile(tileNumber);
-                tiles[row][col].setPosition(col * 162, row * 136 + 100);
+                tiles[row][col].setPosition(col * 160, row * 160 + 100);
                 tileNumber++;
             }
         }
