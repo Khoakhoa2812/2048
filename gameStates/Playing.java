@@ -2,6 +2,7 @@ package gameStates;
 
 import Audio.Music;
 import Board.Board4x4;
+import Board.BoardStateHolder;
 import Calculation.TempoValue;
 import Calculation.calculation;
 import Calculation.tileCombination;
@@ -10,6 +11,7 @@ import Feature.Score;
 import Feature.Undo;
 import Win_Lose.Lose;
 import Win_Lose.Win;
+import entities.EntitesStateManager;
 import entities.EntitiesManager;
 import entities.EntitiesStorage;
 
@@ -34,8 +36,14 @@ public class Playing implements sceneMethods{
     private Score score;
     private Lose lose;
     private Win win;
+    private BoardStateHolder boardStateHolder;
+    private EntitesStateManager entitesStateManager;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
+    }
+
+    public BoardStateHolder getBoardStateHolder() {
+        return boardStateHolder;
     }
 
     public calculation getCalculation() {
@@ -83,6 +91,7 @@ public class Playing implements sceneMethods{
         score = Score.createInstance(this);
         lose = Lose.createInstance(this);
         win = Win.createInstance(this);
+        boardStateHolder = BoardStateHolder.createInstance(this);
     }
 
     public Win getWin() {
@@ -118,11 +127,12 @@ public class Playing implements sceneMethods{
     public void mouseDrag(MouseEvent e){
         isDragCompleted = false;
         if(!isDragged){
+            boardStateHolder.assignStateToStack();
             initX = e.getX();
             initY = e.getY();
             isDragged = true;
+            undo.setUndoUsed(false);
         }
-        undo.storeCurrentEntities();
     }
 
     public double getInitX() {
@@ -159,7 +169,6 @@ public class Playing implements sceneMethods{
             finalY = e.getY();
             isDragged = false;
             isDragCompleted = true;
-            undo.setUndoUsed(false);
             entitiesManager.ageTile();
             if(tempoValue.getCurrDirection() != Calculation.calculateDirection()){
                 entitiesManager.setLimitPerCreation(false);
@@ -168,7 +177,7 @@ public class Playing implements sceneMethods{
     }
     public void update(){
         entitiesManager.update();
-        undo.update();
+        boardStateHolder.update();
         lose.update();
         win.update();
     }

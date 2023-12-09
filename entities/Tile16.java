@@ -3,8 +3,8 @@ package entities;
 import Board.Tile;
 
 public class Tile16 extends Entities{
-    public Tile16(Tile tile) {
-        super(tile);
+    public Tile16(Tile tile, int No) {
+        super(tile,No);
         setValue(16);
         initImage();
     }

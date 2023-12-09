@@ -36,7 +36,7 @@ public class Reset {
                 entities.setEntitiesNewlyDeleted(false);
                 entities.setMoveCompleted(false);
             }
-            playing.getScore().setScore(0);
+            playing.getScore().setCurrentScore(0);
             playing.getLose().setLose(false);
             playing.getWin().setWin(false);
         }

@@ -3,6 +3,8 @@ package Feature;
 import gameStates.Playing;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Score {
     private Playing playing;
@@ -20,12 +22,21 @@ public class Score {
     private Image ScoreBox;
     private Toolkit t = Toolkit.getDefaultToolkit();
     private int score = 0;
+    private List<Integer> scoreStack = new ArrayList<>();
     public void addScore(int add){
         score += add;
     }
 
-    public void setScore(int score) {
+    public void setCurrentScore(int score) {
         this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public List<Integer> getScoreStack() {
+        return scoreStack;
     }
 
     public void render(Graphics g){
