@@ -37,7 +37,7 @@ public class Menu implements sceneMethods{
     }
     @Override
     public void render(Graphics g, Image img) {
-        g.drawImage(img,0,0,640,640,null);
+        g.drawImage(img,0,0,640,740,null);
         startGameButton.render(g);
         quitButton.render(g);
     }

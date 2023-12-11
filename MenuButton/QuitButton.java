@@ -13,7 +13,7 @@ public class QuitButton extends MenuButton{
         }
     }
     public void setBound(){
-        setBound(new Rectangle(400,570,200,50));
+        setBound(new Rectangle(400,600,124,60));
     }
     public QuitButton(){
         setButtonImage(getT().getImage(getClass().getResource("/resources/quit.png")));
@@ -21,6 +21,6 @@ public class QuitButton extends MenuButton{
     }
     @Override
     public void render(Graphics g) {
-        g.drawImage(getButtonImage(),400,570,200,50,null);
+        g.drawImage(getButtonImage(),400,600,124,60,null);
     }
 }

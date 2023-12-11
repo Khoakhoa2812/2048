@@ -15,7 +15,7 @@ public class StartGameButton extends MenuButton {
         }
     }
     public void setBound(){
-        setBound(new Rectangle(50,570,200,50));
+        setBound(new Rectangle(100,600,124,60));
     }
     public StartGameButton(){
         setButtonImage(getT().getImage(getClass().getResource("/resources/start button.png")));
@@ -24,7 +24,7 @@ public class StartGameButton extends MenuButton {
 
     @Override
     public void render(Graphics g) {
-       g.drawImage(getButtonImage(),50,570,200,50,null);
+       g.drawImage(getButtonImage(),100,600,124,60,null);
     }
 
 }
