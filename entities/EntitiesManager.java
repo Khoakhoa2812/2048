@@ -291,16 +291,9 @@ public class EntitiesManager {
     }
 
     public void testEntities() {
-        int i = 0;
-        for (Entities entities : entitiesList) {
-            if (entities.isStatus() && entities.isMoveCompleted() && !entities.isEntitiesNewlyCreated()) {
-                System.out.println(
-                        "entity " + i + " position: " + entities.getTileNum() + " value: " + entities.getValue());
-                i++;
-            } else if (entities.isStatus() && entities.isEntitiesNewlyCreated()) {
-                System.out.println("entity " + i + " position: " + entities.getTileNum() + " value: "
-                        + entities.getValue() + " is newly created");
-                i++;
+        for(Entities entities: entitiesList){
+            if(entities.isStatus()){
+                System.out.println(entities.getTileNum());
             }
         }
     }
@@ -330,6 +323,6 @@ public class EntitiesManager {
         moveEntities();
         createEntitiesPerMove();
         releaseNewEntities();
-        // testEntities();
+//         testEntities();
     }
 }
