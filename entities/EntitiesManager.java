@@ -257,7 +257,7 @@ public class EntitiesManager {
         switch (type) {
             case 0:
                 for (Entities entities : entitiesList) {
-                    if (entities.getValue() == 2 && entities.getNum() == 0 && !entities.isStatus()) {
+                    if (entities.getValue() == 2048 && entities.getNum() == 0 && !entities.isStatus()) {
                         entities.setStatus(true);
                         entities.setPosition(playing.getBoard4x4().getTile()[num / 4][num % 4]);
                         entities.setTileNum(num);
@@ -269,7 +269,7 @@ public class EntitiesManager {
                 break;
             case 1:
                 for (Entities entities : entitiesList) {
-                    if (entities.getValue() == 4 && entities.getNum() == 0 && !entities.isStatus()) {
+                    if (entities.getValue() == 2048 && entities.getNum() == 0 && !entities.isStatus()) {
                         entities.setStatus(true);
                         entities.setPosition(playing.getBoard4x4().getTile()[num / 4][num % 4]);
                         entities.setTileNum(num);
