@@ -22,8 +22,8 @@ public class Lose {
     private Image Lose_background =  t.getImage(getClass().getResource("/resources/youlose_background.png"));
     public void render(Graphics g){
         if(isLose){
-            g.drawImage(Lose_word,120,150,400,400,null);
-            g.drawImage(Lose_background,0,100,640,540,null);
+            g.drawImage(Lose_background,0,100,640,640,null);
+            g.drawImage(Lose_word,-80,30,800,800,null);
         }
     }
     private boolean isLose = false;

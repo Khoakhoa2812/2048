@@ -38,8 +38,8 @@ public class Win {
 
     public void render(Graphics g){
         if(win){
-            g.drawImage(win_word,0,175,650,400,null);
-            g.drawImage(win_background,0,100,640,540,null);
+            g.drawImage(win_background,0,100,640,640,null);
+            g.drawImage(win_word,-80,30,800,800,null);
         }
     }
     public void update(){
