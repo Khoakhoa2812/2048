@@ -53,12 +53,14 @@ public class Score {
     public int setAlignment(){
         if(score < 10){
             return 550;
-        } else if(score >9 && score<100){
+        } else if(score>9 && score<100){
             return 525;
         } else if(score>99 && score<1000){
             return 500;
         } else if(score>999 && score<10000){
             return 475;
+        } else if(score>9999 && score<100000){
+            return 450;
         }
         return 0;
     }
