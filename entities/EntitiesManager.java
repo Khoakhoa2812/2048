@@ -44,12 +44,14 @@ public class EntitiesManager {
 
     public void createEntities() {
         int num1 = random.nextInt(16);
-        int type1 = random.nextInt(2);
-        try {
-            CreateRandomType(type1, checkOccupied(num1));
-        } catch (StackOverflowError e) {
-
+        int type1;
+        int randomAccess = random.nextInt(10);
+        if(randomAccess == 2 || randomAccess == 8){
+            type1 = 1;
+        } else {
+            type1 = 0;
         }
+        CreateRandomType(type1, checkOccupied(num1));
     }
 
     public void createEntitiesPerMove() {
