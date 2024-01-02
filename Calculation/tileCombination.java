@@ -201,7 +201,6 @@ public class tileCombination {
                 entities2.setEntitiesNewlyDeleted(true);
                 entities1.setNum(1);
                 entities2.setNum(1);
-                System.out.println(availableValueCombination[combinationIndex]);
                 for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
                     if (entities.getValue() == availableValueCombination[combinationIndex] && entities.getNum() == 0 && !entities.isStatus()) {
                         entities.setStatus(true);
@@ -221,106 +220,17 @@ public class tileCombination {
         }
         return 0;
     }
-    public boolean checkCombination() {
-        if (playing.getEntitiesManager().checkStream()) {
-            for (int i = 0; i < playing.getBoard4x4().getTile().length; i++) {
-                for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-                    if (entities.isStatus()) {
-                        if (i == 0) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i + 1 || entities1.getTileNum() == i + 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i > 0 && i < 3) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 1
-                                            || entities1.getTileNum() == i + 4 || entities1.getTileNum() == i - 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 3) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i - 1 || entities1.getTileNum() == i + 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 4 || i == 8) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 4
-                                            || entities1.getTileNum() == i - 4 || entities1.getTileNum() == i + 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if ((i > 4 && i < 7) || (i > 8 && i < 11)) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 1
-                                            || entities1.getTileNum() == i + 4 || entities1.getTileNum() == i - 1
-                                            || entities1.getTileNum() == i - 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 7 || i == 11) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 4
-                                            || entities1.getTileNum() == i - 4 || entities1.getTileNum() == i - 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 12) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i + 1 || entities1.getTileNum() == i - 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 15) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i - 1 || entities1.getTileNum() == i - 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i > 12 && i < 15) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 1
-                                            || entities1.getTileNum() == i - 4 || entities1.getTileNum() == i - 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
+    public boolean isAnyCombinationAvailable() {
+        if(playing.getEntitiesManager().countEntitiesAlived() == 16){
+            for(int i = 0;i<playing.getBoard4x4().getTile().length;i++){
+                for(int j = 0;j<playing.getBoard4x4().getTile()[i].length;j++){
+                    for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                        if(entities.isStatus() && entities.getTileNum() == playing.getBoard4x4().getTile()[i][j].getTileNum()){
+                            for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                if(i+1<4 && j+1<4){
+                                    if(entities1.getTileNum() == playing.getBoard4x4().getTile()[i+1][j].getTileNum() ||
+                                            entities1.getTileNum() == playing.getBoard4x4().getTile()[i][j+1].getTileNum()){
+                                        if(entities.getValue() == entities1.getValue()){
                                             return false;
                                         }
                                     }
@@ -330,9 +240,9 @@ public class tileCombination {
                     }
                 }
             }
+            return true;
         } else {
             return false;
         }
-        return true;
     }
 }

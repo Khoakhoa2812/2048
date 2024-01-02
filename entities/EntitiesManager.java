@@ -222,65 +222,58 @@ public class EntitiesManager {
         }
     }
 
-    private int timeCast = 0;
-
     public int checkOccupied(int num) {
+        if(playing.getBoard4x4().isBoardFull()){
+            return -1;
+        }
         for (Entities entities : entitiesList) {
             if (playing.getBoard4x4().getTile()[num / 4][num % 4].isOccupied(entities) && entities.isStatus()) {
                 num = random.nextInt(16);
-                timeCast++;
                 num = checkOccupied(num);
                 break;
             }
         }
-        timeCast = 0;
         return num;
     }
 
-    public boolean checkStream() {
-        int countAlive = 0;
-        Tile[][] tiles = playing.getBoard4x4().getTile(); // Giả sử getTile() trả về mảng 2 chiều Tile[][]
-
-        for (Tile[] row : tiles) {
-            for (Tile tile : row) {
-                for (Entities entity : entitiesList) {
-                    if (entity.isStatus() && tile.isOccupied(entity)) {
-                        countAlive++;
-                        break;
-                    }
-                }
+    public int countEntitiesAlived(){
+        int count = 0;
+        for(Entities entities:entitiesList){
+            if(entities.isStatus()){
+                count++;
             }
         }
-
-        return countAlive == (tiles.length * tiles[0].length);
+        return count;
     }
 
     public void CreateRandomType(int type, int num) {
-        switch (type) {
-            case 0:
-                for (Entities entities : entitiesList) {
-                    if (entities.getValue() == 2 && entities.getNum() == 0 && !entities.isStatus()) {
-                        entities.setStatus(true);
-                        entities.setPosition(playing.getBoard4x4().getTile()[num / 4][num % 4]);
-                        entities.setTileNum(num);
-                        entities.setNum(1);
-                        entities.setEntitiesNewlyCreated(true);
-                        break;
+        if(num != -1){
+            switch (type) {
+                case 0:
+                    for (Entities entities : entitiesList) {
+                        if (entities.getValue() == 2 && entities.getNum() == 0 && !entities.isStatus()) {
+                            entities.setStatus(true);
+                            entities.setPosition(playing.getBoard4x4().getTile()[num / 4][num % 4]);
+                            entities.setTileNum(num);
+                            entities.setNum(1);
+                            entities.setEntitiesNewlyCreated(true);
+                            break;
+                        }
                     }
-                }
-                break;
-            case 1:
-                for (Entities entities : entitiesList) {
-                    if (entities.getValue() == 4 && entities.getNum() == 0 && !entities.isStatus()) {
-                        entities.setStatus(true);
-                        entities.setPosition(playing.getBoard4x4().getTile()[num / 4][num % 4]);
-                        entities.setTileNum(num);
-                        entities.setNum(1);
-                        entities.setEntitiesNewlyCreated(true);
-                        break;
+                    break;
+                case 1:
+                    for (Entities entities : entitiesList) {
+                        if (entities.getValue() == 4 && entities.getNum() == 0 && !entities.isStatus()) {
+                            entities.setStatus(true);
+                            entities.setPosition(playing.getBoard4x4().getTile()[num / 4][num % 4]);
+                            entities.setTileNum(num);
+                            entities.setNum(1);
+                            entities.setEntitiesNewlyCreated(true);
+                            break;
+                        }
                     }
-                }
-                break;
+                    break;
+            }
         }
     }
 
@@ -290,29 +283,6 @@ public class EntitiesManager {
             entities.setEntitiesNewlyCombined(false);
             entities.setEntitiesNewlyDeleted(false);
         }
-    }
-
-    public void testEntities() {
-        for(Entities entities: entitiesList){
-            if(entities.isStatus()){
-                System.out.println(entities.getTileNum());
-            }
-        }
-    }
-
-    private int reRandomized(int num1, int num2) {
-        if (isSameNum(num1, num2)) {
-            num2 = random.nextInt(16);
-            reRandomized(num1, num2);
-        }
-        return num2;
-    }
-
-    private boolean isSameNum(int num1, int num2) {
-        if (num1 == num2) {
-            return true;
-        }
-        return false;
     }
 
     public void EntitiesRender(Graphics g) {
@@ -325,6 +295,5 @@ public class EntitiesManager {
         moveEntities();
         createEntitiesPerMove();
         releaseNewEntities();
-//         testEntities();
     }
 }
