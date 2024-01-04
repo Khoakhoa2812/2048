@@ -37,7 +37,6 @@ public class Playing implements sceneMethods{
     private Lose lose;
     private Win win;
     private BoardStateHolder boardStateHolder;
-    private EntitesStateManager entitesStateManager;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
     }
