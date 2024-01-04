@@ -23,171 +23,6 @@ public class tileCombination {
     }
 
     public void combination(Entities entity1, Entities entity2) {
-//        for (int i = 0; i < availableValueCombination.length; i++) {
-//            if (playing.getCalculation().doCalculation(entity1, entity2) == availableValueCombination[i]
-//                    && entity1.isStatus() && entity2.isStatus() && !entity1.isEntitiesNewlyCombined()
-//                    && !entity2.isEntitiesNewlyCombined()) {
-//                entity1.setStatus(false);
-//                entity2.setStatus(false);
-//                entity1.setEntitiesNewlyDeleted(true);
-//                entity2.setEntitiesNewlyDeleted(true);
-//                entity1.setNum(1);
-//                entity2.setNum(1);
-//                switch (i) {
-//                    case 0:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 4 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(4);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 1:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 8 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(8);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 2:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 16 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(16);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 3:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 32 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(32);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 4:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 64 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(64);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 5:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 128 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(128);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 6:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 256 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(256);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 7:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 512 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(512);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 8:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 1024 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(1024);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                    case 9:
-//                        for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-//                            if (entities.getValue() == 2048 && entities.getNum() == 0 && !entities.isStatus()) {
-//                                entities.setStatus(true);
-//                                entities.setPosition(
-//                                        playing.getBoard4x4().getTile()[entity2.getTileNum() / 4][entity2.getTileNum()
-//                                                % 4]);
-//                                entities.setTileNum(entity2.getTileNum());
-//                                entities.setNum(1);
-//                                entities.setEntitiesNewlyCombined(true);
-//                                playing.getScore().addScore(1024);
-//                                break;
-//                            }
-//                        }
-//                        break;
-//                }
-//                break;
-//            }
-//        }
         doCombination(entity1,entity2, availableValueCombination.length-1);
     }
     public int doCombination(Entities entities1, Entities entities2, int combinationIndex){
@@ -201,7 +36,6 @@ public class tileCombination {
                 entities2.setEntitiesNewlyDeleted(true);
                 entities1.setNum(1);
                 entities2.setNum(1);
-                System.out.println(availableValueCombination[combinationIndex]);
                 for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
                     if (entities.getValue() == availableValueCombination[combinationIndex] && entities.getNum() == 0 && !entities.isStatus()) {
                         entities.setStatus(true);
@@ -221,106 +55,17 @@ public class tileCombination {
         }
         return 0;
     }
-    public boolean checkCombination() {
-        if (playing.getEntitiesManager().checkStream()) {
-            for (int i = 0; i < playing.getBoard4x4().getTile().length; i++) {
-                for (Entities entities : playing.getEntitiesManager().getEntitiesList()) {
-                    if (entities.isStatus()) {
-                        if (i == 0) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i + 1 || entities1.getTileNum() == i + 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i > 0 && i < 3) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 1
-                                            || entities1.getTileNum() == i + 4 || entities1.getTileNum() == i - 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 3) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i - 1 || entities1.getTileNum() == i + 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 4 || i == 8) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 4
-                                            || entities1.getTileNum() == i - 4 || entities1.getTileNum() == i + 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if ((i > 4 && i < 7) || (i > 8 && i < 11)) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 1
-                                            || entities1.getTileNum() == i + 4 || entities1.getTileNum() == i - 1
-                                            || entities1.getTileNum() == i - 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 7 || i == 11) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 4
-                                            || entities1.getTileNum() == i - 4 || entities1.getTileNum() == i - 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 12) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i + 1 || entities1.getTileNum() == i - 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i == 15) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus()
-                                            && (entities1.getTileNum() == i - 1 || entities1.getTileNum() == i - 4)) {
-                                        if (entities.getValue() == entities1.getValue()) {
-                                            return false;
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (i > 12 && i < 15) {
-                            if (entities.getTileNum() == i) {
-                                for (Entities entities1 : playing.getEntitiesManager().getEntitiesList()) {
-                                    if (entities1.isStatus() && (entities1.getTileNum() == i + 1
-                                            || entities1.getTileNum() == i - 4 || entities1.getTileNum() == i - 1)) {
-                                        if (entities.getValue() == entities1.getValue()) {
+    public boolean isAnyCombinationAvailable() {
+        if(playing.getEntitiesManager().countEntitiesAlived() == 16){
+            for(int i = 0;i<playing.getBoard4x4().getTile().length;i++){
+                for(int j = 0;j<playing.getBoard4x4().getTile()[i].length;j++){
+                    for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                        if(entities.isStatus() && entities.getTileNum() == playing.getBoard4x4().getTile()[i][j].getTileNum()){
+                            for(Entities entities1:playing.getEntitiesManager().getEntitiesList()){
+                                if(i+1<4 && j+1<4){
+                                    if(entities1.getTileNum() == playing.getBoard4x4().getTile()[i+1][j].getTileNum() ||
+                                            entities1.getTileNum() == playing.getBoard4x4().getTile()[i][j+1].getTileNum()){
+                                        if(entities.getValue() == entities1.getValue()){
                                             return false;
                                         }
                                     }
@@ -330,9 +75,9 @@ public class tileCombination {
                     }
                 }
             }
+            return true;
         } else {
             return false;
         }
-        return true;
     }
 }

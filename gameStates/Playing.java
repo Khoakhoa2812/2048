@@ -37,7 +37,6 @@ public class Playing implements sceneMethods{
     private Lose lose;
     private Win win;
     private BoardStateHolder boardStateHolder;
-    private EntitesStateManager entitesStateManager;
     public EntitiesManager getEntitiesManager() {
         return entitiesManager;
     }
@@ -80,7 +79,7 @@ public class Playing implements sceneMethods{
     }
 
     public void initComponent(){
-        board4x4 = Board4x4.createInstance();
+        board4x4 = Board4x4.createInstance(this);
         entitiesManager = EntitiesManager.createInstance(this);
         Calculation = calculation.createInstance(this);
         TileCombination = tileCombination.createInstance(this);
@@ -189,8 +188,5 @@ public class Playing implements sceneMethods{
         undo.render(g);
         reset.render(g);
         score.render(g);
-        lose.render(g);
-        win.render(g);
-//        board4x4.render(g);
     }
 }

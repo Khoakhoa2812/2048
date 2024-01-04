@@ -24,6 +24,8 @@ public class World extends JPanel implements Runnable{
     private double UPS_SET = 60.0;
     private Menu menu;
     private Playing playing;
+    private WinState winState;
+    private LoseState loseState;
     private Image[] images = new Image[2];
     private Toolkit t = Toolkit.getDefaultToolkit();
     Thread gameThread = new Thread(this);
@@ -41,6 +43,8 @@ public class World extends JPanel implements Runnable{
     public void initState(){
         menu = Menu.createInstance();
         playing = Playing.createInstance();
+        winState = WinState.createInstance(this);
+        loseState = LoseState.createInstance();
     }
     public void updates(){
         playing.update();
@@ -57,6 +61,12 @@ public class World extends JPanel implements Runnable{
                 break;
             case PLAYING:
                 playing.render(g,images[1]);
+                break;
+            case WIN:
+                winState.render(g);
+                break;
+            case LOSE:
+                loseState.render(g);
                 break;
         }
     }

@@ -1,18 +1,25 @@
 package Board;
 
+import entities.Entities;
+import gameStates.Playing;
+
 import java.awt.*;
 
 public class Board4x4 {
     private static Board4x4 instance;
     private Tile[][] tiles = new Tile[4][4];
-
+    private Playing playing;
     public Tile[][] getTile() {
         return tiles;
     }
+    public Board4x4(Playing playing){
+        this.playing = playing;
+        initTiles();
+    }
 
-    public static Board4x4 createInstance() {
+    public static Board4x4 createInstance(Playing playing) {
         if (instance == null) {
-            instance = new Board4x4();
+            instance = new Board4x4(playing);
             return instance;
         }
         return null;
@@ -46,7 +53,16 @@ public class Board4x4 {
     public void update(){
 //        boardTest();
     }
-    private Board4x4() {
-        initTiles();
+    public boolean isBoardFull(){
+        for(int i = 0;i<tiles.length;i++){
+            for(int j = 0;j<tiles[i].length;j++){
+                for(Entities entities:playing.getEntitiesManager().getEntitiesList()){
+                    if(!tiles[i][j].isOccupied(entities)){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }
